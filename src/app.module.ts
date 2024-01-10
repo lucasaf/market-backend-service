@@ -4,7 +4,8 @@ import validationSchema from '../config/validation.schema';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
-import { ProductModule } from './products/products.module';
+import { LocationsModule } from './locations/locations.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { ProductModule } from './products/products.module';
     }),
     DatabaseModule,
     ProductModule,
+    LocationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
