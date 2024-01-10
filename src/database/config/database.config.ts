@@ -11,7 +11,7 @@ const databaseConfig: DataSourceOptions = {
   port: configService.get<number>('DATABASE_PORT'),
   username: configService.get<string>('DATABASE_USERNAME'),
   password: configService.get<string>('DATABASE_PASSWORD'),
-  database: configService.get<string>('DATABASE_DATABASE'),
+  database: configService.get<string>('DATABASE_NAME'),
   entities: ['dist/**/*.entity{.ts,.js}'],
   migrations: ['dist/database/migrations/*{.ts,.js}'],
   synchronize: false,
