@@ -5,7 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { LocationsModule } from './locations/locations.module';
-import { ProductModule } from './product/product.module';
+import { ProductModule } from './products/product.module';
 
 @Module({
   imports: [
