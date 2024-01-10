@@ -4,6 +4,7 @@ import validationSchema from '../config/validation.schema';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
+import { ProductModule } from './products/products.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { DatabaseModule } from './database/database.module';
       validationSchema,
     }),
     DatabaseModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],
