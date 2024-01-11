@@ -46,7 +46,7 @@ export class ProductRepository
     return this.save(product);
   }
 
-  async deleteProduct(id: number): Promise<void> {
+  async deleteProduct(id: string): Promise<void> {
     const result = await this.delete(id);
 
     if (result.affected === 0) {
