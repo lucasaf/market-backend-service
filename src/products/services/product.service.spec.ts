@@ -3,6 +3,7 @@ import { CreateProductDto } from '../dto/create-product.dto';
 import { Product } from '../entities/product.entity';
 import {
   CREATE_PRODUCT_USE_CASE,
+  DELETE_PRODUCT_USE_CASE,
   UPDATE_PRODUCT_USE_CASE,
 } from '../shared/constants';
 import { ProductService } from './product.service';
@@ -10,6 +11,7 @@ import { ProductService } from './product.service';
 let productService: ProductService;
 let mockCreateProductUseCase;
 let mockUpdateProductUseCase;
+let mockDeleteProductUseCase;
 
 beforeEach(async () => {
   mockCreateProductUseCase = {
@@ -17,6 +19,9 @@ beforeEach(async () => {
   };
   mockUpdateProductUseCase = {
     execute: jest.fn().mockResolvedValue({ id: '123', ...new Product() }),
+  };
+  mockDeleteProductUseCase = {
+    execute: jest.fn().mockImplementation(() => Promise.resolve()),
   };
 
   const module: TestingModule = await Test.createTestingModule({
@@ -29,6 +34,10 @@ beforeEach(async () => {
       {
         provide: UPDATE_PRODUCT_USE_CASE,
         useValue: mockUpdateProductUseCase,
+      },
+      {
+        provide: DELETE_PRODUCT_USE_CASE,
+        useValue: mockDeleteProductUseCase,
       },
     ],
   }).compile();
@@ -66,6 +75,16 @@ describe('create', () => {
         id,
         updateProductDto,
       );
+    });
+  });
+
+  describe('delete', () => {
+    it('should delete a product', async () => {
+      const id = '123';
+
+      await productService.deleteProduct(id);
+
+      expect(mockDeleteProductUseCase.execute).toHaveBeenCalledWith(id);
     });
   });
 });
