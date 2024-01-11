@@ -1,38 +1,36 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Market Backend Service
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This is a backend application for a product management system, built with NestJS, TypeORM, and PostgreSQL. It includes a RESTful API to manage products, locations, product availability across locations, and product images.
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+The project follows Clean Architecture principles, ensuring separation of concerns and modular design. It provides endpoints for CRUD operations on products and locations, handling product inventory across different locations, and managing product images.
+
+### Dependencies
+
+- Node.js (v14 or above)
+- NestJS
+- pnpm
+- PostgreSQL
+- Docker & Docker Compose (for containerization)
 
 ## Installation
+
+- Clone the repository to your local machine.
+- Ensure Docker is running on your system.
+- Copy `.env.example` to `.env` and fill in your database and application configuration details.
 
 ```bash
 $ pnpm install
 ```
 
 ## Running the app
+
+- Run the application using Docker Compose:
+
+```bash
+$ docker-compose up -d
+```
 
 ```bash
 # development
@@ -58,16 +56,25 @@ $ pnpm run test:e2e
 $ pnpm run test:cov
 ```
 
+## API Documentation
+
+Database schema:
+![Alt text](database.png)
+
+## Architecture Overview
+
+The project structure is as follows:
+
+- `src/modules/`: Contains the application modules, each encapsulating the logic for different entities (Products, Locations, etc.).
+- `src/entities/`: Contains TypeORM entities that represent tables in the PostgreSQL database.
+- `src/migrations/`: Contains TypeORM migration files for database schema changes.
+- `src/services/`: Contains business logic for handling operations on data.
+- `src/controllers/`: Contains logic for handling HTTP requests and sending responses.
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+## Authors
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Lucas Alves Ferreira - Initial work
