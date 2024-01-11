@@ -7,8 +7,10 @@ import { ProductService } from './services/product.service';
 import {
   CREATE_PRODUCT_USE_CASE,
   PRODUCT_REPOSITORY,
+  UPDATE_PRODUCT_USE_CASE,
 } from './shared/constants';
 import { CreateProductUseCase } from './use-cases/create-product.use-case';
+import { UpdateProductUseCase } from './use-cases/update-product.use-case';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Product])],
@@ -16,12 +18,16 @@ import { CreateProductUseCase } from './use-cases/create-product.use-case';
   providers: [
     ProductService,
     {
+      provide: PRODUCT_REPOSITORY,
+      useClass: ProductRepository,
+    },
+    {
       provide: CREATE_PRODUCT_USE_CASE,
       useClass: CreateProductUseCase,
     },
     {
-      provide: PRODUCT_REPOSITORY,
-      useClass: ProductRepository,
+      provide: UPDATE_PRODUCT_USE_CASE,
+      useClass: UpdateProductUseCase,
     },
   ],
 })
