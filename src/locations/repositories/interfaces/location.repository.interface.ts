@@ -4,8 +4,6 @@ import { Location } from '../../entities/location.entity';
 
 export interface ILocationRepository {
   createLocation(createLocationDto: CreateLocationDto): Promise<Location>;
-  findLocationById(id: string): Promise<Location>;
-  findAllLocations(): Promise<Location[]>;
   updateLocation(
     id: string,
     updateLocationDto: UpdateLocationDto,

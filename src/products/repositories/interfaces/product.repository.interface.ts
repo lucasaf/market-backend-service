@@ -4,6 +4,8 @@ import { Product } from '../../entities/product.entity';
 
 export interface IProductRepository {
   createProduct(createProductDto: CreateProductDto): Promise<Product>;
+  findById(id: string): Promise<Product>;
+  findAll(): Promise<Product[]>;
   updateProduct(
     id: string,
     updateProductDto: UpdateProductDto,

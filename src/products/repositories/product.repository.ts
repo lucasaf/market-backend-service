@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateProductDto } from '../dto/create-product.dto';
 import { UpdateProductDto } from '../dto/update-product.dto';
@@ -19,9 +20,9 @@ export class ProductRepository implements IProductRepository {
       price,
       type,
     };
-    const newProductEntity = this.create(newProduct);
+    const newProductEntity = this.productRepository.create(newProduct);
 
-    return await this.save(newProductEntity);
+    return await this.productRepository.save(newProductEntity);
   }
 
   async updateProduct(
@@ -37,22 +38,36 @@ export class ProductRepository implements IProductRepository {
       type,
     };
 
-    const product = await this.preload(partialProduct);
+    const product = await this.productRepository.findOneBy({ id });
 
     if (!product) {
       throw new NotFoundException(`Product with ID ${id} not found.`);
     }
 
-    Object.assign(product, updateProductDto);
+    Object.assign(product, partialProduct);
 
-    return this.save(product);
+    return this.productRepository.save(product);
   }
 
   async deleteProduct(id: string): Promise<void> {
-    const result = await this.delete(id);
+    const result = await this.productRepository.delete(id);
 
     if (result.affected === 0) {
       throw new NotFoundException(`Product with ID ${id} not found.`);
     }
+  }
+
+  async findById(id: string): Promise<Product> {
+    const product = await this.productRepository.findOneBy({ id });
+
+    if (!product) {
+      throw new NotFoundException(`Product with ID ${id} not found.`);
+    }
+
+    return product;
+  }
+
+  async findAll(): Promise<Product[]> {
+    return await this.productRepository.find();
   }
 }
