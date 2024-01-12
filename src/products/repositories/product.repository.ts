@@ -6,10 +6,12 @@ import { Product } from '../entities/product.entity';
 import { IProductRepository } from './interfaces/product.repository.interface';
 
 @Injectable()
-export class ProductRepository
-  extends Repository<Product>
-  implements IProductRepository
-{
+export class ProductRepository implements IProductRepository {
+  constructor(
+    @InjectRepository(Product)
+    private productRepository: Repository<Product>,
+  ) {}
+
   async createProduct(createProductDto: CreateProductDto): Promise<Product> {
     const { name, price, type } = createProductDto;
     const newProduct = {
