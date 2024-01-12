@@ -59,6 +59,7 @@ $ pnpm run test:cov
 ## API Documentation
 
 Database schema:
+
 ![Alt text](database.png)
 
 ## Architecture Overview
