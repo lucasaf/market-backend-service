@@ -2,7 +2,7 @@ import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Location } from '../entities/location.entity';
-import { LocationRepository } from './localtion.repository';
+import { LocationRepository } from './location.repository';
 
 describe('LocationRepository', () => {
   let locationRepository: LocationRepository;
