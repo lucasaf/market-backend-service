@@ -69,6 +69,7 @@ describe('LocationRepository', () => {
         name: 'Test Location',
         createdAt: new Date(),
         updatedAt: new Date(),
+        productLocations: [],
       };
       const updatedLocation = { ...mockLocation, ...mockUpdateDto };
 

@@ -1,10 +1,5 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { ProductLocation } from '../../products/entities/product-location.entity';
 
 @Entity()
 export class Location {
@@ -14,9 +9,19 @@ export class Location {
   @Column()
   name: string;
 
-  @CreateDateColumn({ type: 'timestamptz' })
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
 
-  @UpdateDateColumn({ type: 'timestamptz' })
+  @Column({
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+    onUpdate: 'CURRENT_TIMESTAMP',
+  })
   updatedAt: Date;
+
+  @OneToMany(
+    () => ProductLocation,
+    (productLocation) => productLocation.location,
+  )
+  productLocations: ProductLocation[];
 }
