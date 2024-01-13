@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { LocationsModule } from './locations/locations.module';
 import { ProductModule } from './products/product.module';
+import { ProductLocationsModule } from './product-locations/product-locations.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { ProductModule } from './products/product.module';
     DatabaseModule,
     ProductModule,
     LocationsModule,
+    ProductLocationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
