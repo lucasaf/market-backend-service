@@ -4,15 +4,25 @@ import { Product } from './product.entity';
 
 @Entity()
 export class ProductLocation {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  @ManyToOne(() => Product)
+  @ManyToOne(() => Product, (product) => product.productLocations)
   product: Product;
 
-  @ManyToOne(() => Location)
+  @ManyToOne(() => Location, (location) => location.productLocations)
   location: Location;
 
   @Column('decimal')
   quantity: number;
+
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
+
+  @Column({
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+    onUpdate: 'CURRENT_TIMESTAMP',
+  })
+  updatedAt: Date;
 }
