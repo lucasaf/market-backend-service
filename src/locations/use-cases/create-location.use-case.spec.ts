@@ -31,10 +31,14 @@ describe('CreateLocationUseCase', () => {
     it('should create a location successfully', async () => {
       const mockLocationDto = {
         name: 'New Location',
+      };
+      const expectedLocation = {
+        id: '1',
+        ...mockLocationDto,
         createdAt: new Date(),
         updatedAt: new Date(),
+        productLocations: [],
       };
-      const expectedLocation = { id: '1', ...mockLocationDto };
 
       jest
         .spyOn(mockLocationRepository, 'createLocation')
