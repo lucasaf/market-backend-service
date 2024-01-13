@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { ProductLocation } from './product-location.entity';
+import { ProductLocation } from '../../product-locations/entities/product-location.entity';
 
 @Entity()
 export class Product {
