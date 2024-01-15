@@ -5,6 +5,7 @@ import { DataSourceOptions } from 'typeorm';
 setConfig({ path: 'config/.env' });
 const configService = new ConfigService();
 
+console.log(configService);
 const databaseConfig: DataSourceOptions = {
   type: 'postgres',
   host: configService.get<string>('DATABASE_HOST'),
@@ -13,7 +14,7 @@ const databaseConfig: DataSourceOptions = {
   password: configService.get<string>('DATABASE_PASSWORD'),
   database: configService.get<string>('DATABASE_NAME'),
   entities: ['dist/**/*.entity{.ts,.js}'],
-  migrations: ['dist/database/migrations/*{.ts,.js}'],
+  migrations: ['dist/src/infrastructure/database/migrations/*{.ts,.js}'],
   synchronize: false,
   logging: true,
   migrationsRun: true,

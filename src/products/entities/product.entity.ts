@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Image } from '../../images/entities/image.entity';
 import { ProductLocation } from '../../product-locations/entities/product-location.entity';
 
 @Entity()
@@ -37,4 +38,7 @@ export class Product {
     (productLocation) => productLocation.product,
   )
   productLocations: ProductLocation[];
+
+  @OneToMany(() => Image, (image) => image.resource, { cascade: true })
+  images: Image[];
 }
