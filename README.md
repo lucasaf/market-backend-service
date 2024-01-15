@@ -6,6 +6,10 @@ This is a backend application for a product management system, built with NestJS
 
 The project follows Clean Architecture principles, ensuring separation of concerns and modular design. It provides endpoints for CRUD operations on products and locations, handling product inventory across different locations, and managing product images.
 
+### Design and Writing exercise
+
+The First part of the challenge is available at https://docs.google.com/document/d/1VUhAq9ROav2hGDFHHZXWGKNbxylMZ0URAYzSjIkDakY/edit?usp=sharing
+
 ### Dependencies
 
 - Node.js (v14 or above)
