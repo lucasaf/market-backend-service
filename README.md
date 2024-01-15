@@ -64,7 +64,7 @@ $ pnpm run test:cov
 
 Database schema:
 
-![Alt text](database.png)
+![Alt text](database2.png)
 
 ## Architecture Overview
 
