@@ -36,5 +36,6 @@ import { UpdateProductUseCase } from './use-cases/update-product.use-case';
       useClass: DeleteProductUseCase,
     },
   ],
+  exports: [PRODUCT_REPOSITORY],
 })
 export class ProductModule {}

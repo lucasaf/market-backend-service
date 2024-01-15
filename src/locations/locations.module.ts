@@ -19,6 +19,7 @@ import { UpdateLocationUseCase } from './use-cases/update-location.use-case';
   controllers: [LocationsController],
   providers: [
     LocationsService,
+    LocationRepository,
     {
       provide: LOCATION_REPOSITORY,
       useClass: LocationRepository,
@@ -36,5 +37,6 @@ import { UpdateLocationUseCase } from './use-cases/update-location.use-case';
       useClass: DeleteLocationUseCase,
     },
   ],
+  exports: [LOCATION_REPOSITORY],
 })
 export class LocationsModule {}

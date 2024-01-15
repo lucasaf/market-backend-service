@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { LocationRepository } from '../locations/repositories/location.repository';
-import { LOCATION_REPOSITORY } from '../locations/shared/constants';
-import { ProductRepository } from '../products/repositories/product.repository';
-import { PRODUCT_REPOSITORY } from '../products/shared/constants';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { LocationsModule } from '../locations/locations.module';
+import { ProductModule } from '../products/product.module';
 import { ProductLocationController } from './controllers/product-locations.controller';
+import { ProductLocation } from './entities/product-location.entity';
 import { ProductLocationRepository } from './repositories/product-location.repository';
 import { ProductLocationService } from './services/product-locations.service';
 import {
@@ -13,6 +13,11 @@ import {
 import { UpdateQuantityUseCase } from './use-cases/update-quantity.use-case';
 
 @Module({
+  imports: [
+    TypeOrmModule.forFeature([ProductLocation]),
+    ProductModule,
+    LocationsModule,
+  ],
   controllers: [ProductLocationController],
   providers: [
     ProductLocationService,
@@ -23,14 +28,6 @@ import { UpdateQuantityUseCase } from './use-cases/update-quantity.use-case';
     {
       provide: UPDATE_QUANTITY_USE_CASE,
       useClass: UpdateQuantityUseCase,
-    },
-    {
-      provide: PRODUCT_REPOSITORY,
-      useClass: ProductRepository,
-    },
-    {
-      provide: LOCATION_REPOSITORY,
-      useClass: LocationRepository,
     },
   ],
 })

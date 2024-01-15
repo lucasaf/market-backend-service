@@ -18,16 +18,11 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli -f dist/infrastructure/database/migration.config.js",
-    "migration1:generate": "npm run build && npm run typeorm migration:generate -- -n",
-    "migration1:up": "npm run build && npm run typeorm migration:run",
-    "migration1:down": "npm run build && npm run typeorm migration:revert",
-    "migration1:create": "npm run build && npm run typeorm -- migration:create -d src/infrastructure/database/migrations -n",
     "typeorm:cli": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli -d dist/src/infrastructure/database/config/data-source.config.js",
-    "migration:generate": "npm run build && npm run typeorm:cli migration:generate ./src/infrastructure/database/migrations/schema-generate",
-    "migration:create": "npm run build && typeorm migration:create ./src/infrastructure/database/migrations/schema-update",
-    "migration:run": "npm run build && npm run typeorm:cli migration:run",
-    "migration:revert": "npm run build && npm run typeorm:cli migration:revert"
+    "migration:generate": "pnpm run build && pnpm run typeorm:cli migration:generate ./src/infrastructure/database/migrations/schema-generate",
+    "migration:create": "pnpm run build && typeorm migration:create ./src/infrastructure/database/migrations/schema-update",
+    "migration:run": "pnpm run build && pnpm run typeorm:cli migration:run",
+    "migration:revert": "pnpm run build && pnpm run typeorm:cli migration:revert"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
