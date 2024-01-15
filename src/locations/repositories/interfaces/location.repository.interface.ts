@@ -9,4 +9,6 @@ export interface ILocationRepository {
     updateLocationDto: UpdateLocationDto,
   ): Promise<Location>;
   deleteLocation(id: string): Promise<void>;
+  findLocationById(id: string): Promise<Location>;
+  findAllLocations(): Promise<Location[]>;
 }
